@@ -6,9 +6,12 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/brands';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
 
+@import "users";
+@import "login";
+@import "register";
+
 .container{
   max-width: 1000px;
-
 }
 .navbar{
   height: 60px;
@@ -30,4 +33,9 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
     font-size: 13px;
     text-align: center;
   }
+}
+.avatar-img img{
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
 }

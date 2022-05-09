@@ -1,0 +1,176 @@
+/*User show*/
+.profile .avatar{
+  .wrapper{
+    width: 140px;
+    height: 140px;
+    margin: 40px auto;
+  }
+  .wrapper img{
+    width: 100%;
+    border-radius: 50%;
+  }
+}
+
+.profile .basic-info{
+  padding: 40px 0;
+  .user-wrapper{
+    display: flex;
+  }
+  .username{
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 400;
+  }
+  .edit-profile-btn {
+    margin-left: 20px;
+    margin-top: 5px;
+    button{
+      background-color: transparent;
+      border-radius: 5px;
+      border: 1px solid #dbdbdb;
+      color: #262626;
+      font-size: 14px;
+      padding: 4px 10px;
+      font-weight: 500;
+    }
+  }
+  ul.posts{
+    padding-left: 0;
+    > li{
+      display: inline;
+      padding-right: 40px;
+      font-size: 15px;
+      span{
+        color: #262626;
+        font-weight: 600;
+      }
+    }
+  }
+  .name{
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .bio{
+    color: #000000;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    font-style: italic;
+  }
+}
+
+.profile-tabs{
+  border-top: 1px solid #efefef;
+  display: flex;
+  justify-content: center;
+  a.tab{
+    height: 45px;
+    margin-right: 50px;
+    line-height: 55px;
+    color: #999;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    i{
+      padding-right: 1px;
+    }
+  }
+  a.active{
+    border-top: 1px solid #262626;
+    color: #262626;
+  }
+}
+.user-posts{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 20px;
+.wrapper{
+    width: 280px;
+    height: 280px;
+    margin: 15px;
+    img{
+      width: 100%;
+    }
+  }
+}
+
+/* User edit*/
+.user-edit{
+  display: flex;
+  margin-top: 60px;
+  min-height: 500px;
+  background-color: #ffffff;
+
+  .actions{
+    width: 236px;
+    border: 1px solid #dbdbdb;  
+  }
+  .details{
+    flex: 1;
+    border: 1px solid #dbdbdb;
+    border-left: none;
+  }
+}
+
+.nav-link {
+  padding: 20px;
+  height: 60px;
+  align-items: center;
+  display: flex;
+  justify-content: left;
+  border-bottom: 0px;
+  border-color: #000000;
+  color: #000000;
+  border-radius: 0px;
+
+  &:hover{
+    cursor: pointer;
+    background-color: #e4e0e0;
+    color: #000000;
+  }
+}
+
+.nav-pills .nav-link.active{
+  border-left: 1px solid;
+  font-weight: 600;
+  background-color: #efefef;
+  color: #000000;
+  border-radius: 0px;
+}
+
+/* profile tab */
+
+.form-edit-user{
+  padding: 30px 100px 10px 50px;
+  .form-group, input{
+    font-size: 14px;
+    color: black;
+  }
+  input, textarea{
+    border: 2px solid #efefef;
+  }
+  .col-form-label{
+    text-align: right;
+    font-weight: 600;
+  }
+  .username{
+    font-size: 20px;
+    line-height: 22px;
+    margin-bottom: 0;
+  }
+  .change-photo{
+    color: #3897f0;
+    text-decoration: none;
+    font-size: 13px;
+  }
+  input[type='submit']{
+    color: white;
+  }
+  .profile-avatar {
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+  }
+}
