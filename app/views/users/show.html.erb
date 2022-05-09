@@ -1,0 +1,50 @@
+<div class="user-profile">
+  <div class="profile row">
+    <div class="col-md-4 avatar">
+      <div class="wrapper">
+        <%= image_pack_tag 'avatar.jpg'%>
+      </div>
+    </div>
+    
+    <div class="col-md-8 basic-info">
+      <div class="user-wrapper">
+        <h2 class="username">duy.hoang</h2>
+        <a class="edit-profile-btn" href="<%= edit_user_path(current_user)%>">
+          <button>Edit Profile</button>
+        </a>
+      </div>
+      <ul class="posts">
+        <li><span>12</span> posts</li>
+        <li><span>195</span> followers</li>
+        <li><span>345</span> following</li>
+      </ul>
+      <h2 class="name">Duy Hoang</h2>
+      <h2 class="bio">dh.com</h2>
+    </div>
+  </div>
+</div>
+<div class="profile-tabs">
+  <a class="tab active" href="">
+    <i class="fa fa-th"></i>
+    POSTS
+  </a>
+  <a class="tab" href="">
+    <i class="fa fa-bookmark"></i>
+    SAVED
+  </a>
+  <a class="tab" href="">
+    <i class="fa-solid fa-user"></i>
+    TAGGED
+  </a>
+</div>
+<div class="user-posts">
+  <div class="wrapper">
+    <img src="https://th.bing.com/th/id/OIP.31qt7XgIjVEc8byeuVL0ngHaEo?w=270&h=180&c=7&r=0&o=5&pid=1.7">
+  </div>
+  <div class="wrapper">
+    <img src="https://th.bing.com/th/id/OIP._YLtuhfZJH0KLpkp-EEiVgHaH5?w=158&h=180&c=7&r=0&o=5&pid=1.7">
+  </div>
+  <div class="wrapper">
+    <img src="https://th.bing.com/th/id/OIP.oy8SbD3NP4J7tun01gMjmgHaEK?w=332&h=186&c=7&r=0&o=5&pid=1.7">
+  </div>
+</div>
