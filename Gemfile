@@ -15,6 +15,8 @@ gem "slim-rails"
 
 gem 'pry-rails', :group => :development
 
+gem 'gemoji'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.5'
 # Use postgresql as the database for Active Record

@@ -5,7 +5,7 @@
   </div>
   <div class="details tab-content" id="v-pills-tabContent">
     <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-      <%= form_with model: current_user, local: true, html: {class: "form-horizontal form-edit-user"} do |f| %>
+      <%= form_with model: current_user, local: true, html: {class: "form-edit-user"} do |f| %>
         <div class="form-group row">
           <div class="col-sm-3 col-form-label">
             <%= image_pack_tag 'avatar.jpg', class: "profile-avatar"%>
