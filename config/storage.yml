@@ -32,9 +32,3 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
-
-azure:
-  service: AzureStorage
-  storage_account_name: "dain"
-  storage_access_key: ""
-  container: ""

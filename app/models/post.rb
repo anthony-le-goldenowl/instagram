@@ -1,10 +1,11 @@
 class Post < ApplicationRecord
   validate :image_presence
+  validates_presence_of :caption
 
   belongs_to :user
-  has_many_attached :images
+  has_one_attached :image
 
   def image_presence
-    errors.add(:images, "can't be blank") unless images.attached?
+    errors.add(:image, "can't be blank") unless image.attached?
   end
 end

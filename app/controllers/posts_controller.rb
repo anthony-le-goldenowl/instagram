@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
   def create
-    if Post.create(post_params)
+    @post = Post.new(post_params)
+    @post.image.attach(post_params[:image])
+
+    if @post.save
       redirect_to root_path
     else
-      render partial: 'create_post_modal'
+      render :new
     end
   end
 
@@ -18,6 +21,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:caption, :images, :user_id)
+    params.require(:post).permit(:caption, :image, :user_id)
   end
 end

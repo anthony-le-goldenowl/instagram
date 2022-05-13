@@ -1,2 +1,2 @@
-$("#exampleModal").find(".modal-body").html("<%= escape_javascript(render 'posts/create_post_modal') %>");
+$("#exampleModal").find(".modal-body").html("<%= j (render 'create_post_modal') %>");
 $("#exampleModal").modal();

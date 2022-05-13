@@ -21,7 +21,9 @@ gem 'turbo-rails'
 
 gem 'popper_js', '~> 2.9.3'
 
-gem "azure-storage-blob", require: false
+gem 'activestorage'
+
+gem 'rails_emoji_picker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.5'
