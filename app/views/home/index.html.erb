@@ -1,7 +1,9 @@
 <div class="home-container">
   <div class="row">
     <div class="col-7 news-container">
-      <div class="row new-feed-container">new feed</div>
+      <div class="row new-feed-container">
+        <%= render 'home/stories'%>
+      </div>
       <div class="row new-post-container">
         <% @posts.each do |post| %>
           <section class="new-post">
@@ -52,7 +54,58 @@
       </div>
     </div>
     <div class="col-5 suggestions-container">
-      col 5
+      <div class="row suggestion-content">
+        <div class="navbar d-flex justify-content-between">
+          <div class="d-flex justify-content-start">
+            <%= image_pack_tag 'avatar.jpg', class: 'm-2'%>
+            <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> <%= current_user.username %> </div>
+          </div>
+          <button>
+            Switch
+          </button>
+        </div>
+      </div>
+      <div class="suggestion-title mb-1">Suggestions for you</div>
+      <div class="row suggestion-content">
+        <ul class="suggestion-list">
+          <li class="d-flex justify-content-between">
+            <a href="#" class="d-flex justify-content-start">
+              <%= image_pack_tag 'avatar/avatar16.jpeg' %>
+              <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> truongxuan </div>
+            </a>
+            <button>
+              Follow
+            </button>
+          </li>
+          <li class="d-flex justify-content-between">
+            <a href="#" class="d-flex justify-content-start">
+              <%= image_pack_tag 'avatar/avatar15.jpeg' %>
+              <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> kimphat12 </div>
+            </a>
+            <button>
+              Follow
+            </button>
+          </li>
+          <li class="d-flex justify-content-between">
+            <a href="#" class="d-flex justify-content-start">
+              <%= image_pack_tag 'avatar/avatar14.jpeg' %>
+              <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> anthai </div>
+            </a>
+            <button>
+              Follow
+            </button>
+          </li>
+          <li class="d-flex justify-content-between">
+            <a href="#" class="d-flex justify-content-start">
+              <%= image_pack_tag 'avatar/avatar13.jpeg' %>
+              <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> xuan.linh.22 </div>
+            </a>
+            <button>
+              Follow
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
