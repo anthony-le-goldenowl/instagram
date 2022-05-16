@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+  <%= form_with model: @post do |f| %>
+    <div class="form-group">
+      <%= content_with_emoji(@post.caption.to_s.dup) %>
+      <p class="emoji-picker-container">
+        <%= f.text_area :caption, class: 'form-control', data: { emojiable: true } %>
+      </p>
+      <% @post.errors.full_messages_for(:caption).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <%= f.file_field :image %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :user_id, value: current_user.id, class:'d-none'%>
+    </div>
+    <br>
+    <div class="text-center">
+      <%= f.submit 'Create Post', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+<% end %>

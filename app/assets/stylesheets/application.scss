@@ -5,13 +5,16 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/regular';
 @import '@fortawesome/fontawesome-free/scss/brands';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
+@import 'rails_emoji_picker';
 
 @import "users";
 @import "login";
 @import "register";
+@import "posts";
+@import "home";
 
 .container{
-  max-width: 1000px;
+  max-width: 930px;
 }
 .navbar{
   height: 60px;
@@ -38,4 +41,12 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   width: 24px;
   height: 24px;
   border-radius: 50%;
+}
+
+/* responsive header */
+
+@media only screen and (max-width: 700px) {
+  .search-form {
+    display: none;
+  }
 }

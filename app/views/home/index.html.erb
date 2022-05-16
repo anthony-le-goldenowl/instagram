@@ -1,2 +1,58 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="home-container">
+  <div class="row">
+    <div class="col-7 news-container">
+      <div class="row new-feed-container">new feed</div>
+      <div class="row new-post-container">
+        <% @posts.each do |post| %>
+          <section class="new-post">
+            <div class="user">
+              <div class="avatar">
+                <%= image_pack_tag 'avatar.jpg'%>
+              </div>
+              <div class="username">
+                <%= post.user.username %>
+              </div>
+            </div>
+            <%= image_tag post.image, class: 'main-image' %>
+            <section class="post-actions navbar navbar-light d-flex justify-content-between">
+              <span class="post-reacts">
+                <a href="#">
+                  <%= image_pack_tag 'homepage/like-btn.png'%>
+                </a>
+                <a href="#">
+                  <%= image_pack_tag 'homepage/comment.png'%>
+                </a>
+                <a href="#">
+                  <%= image_pack_tag 'homepage/send-btn.png'%>
+                </a>
+              </span>
+              <a href="#">
+                <%= image_pack_tag 'homepage/save-btn.png'%>
+              </a>
+            </section>
+            <div class="post-like-records">
+              14 likes
+            </div>
+            <div class="caption">
+              <span style="font-weight: 600;">
+                <%= post.user.username %>
+              </span>
+              <%= post.caption %>
+            </div>
+            <a href="#" style="text-decoration: none;">
+              <div class="view-comment-btn">
+                View all comments
+              </div>
+            </a>
+            <div class="view-comment-btn" style="font-size: 12px">
+              2 HOURS AGO
+            </div>
+          </section>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-5 suggestions-container">
+      col 5
+    </div>
+  </div>
+</div>
