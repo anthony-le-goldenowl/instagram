@@ -13,6 +13,44 @@
   .suggestions-container {
     position: sticky;
     top: 0;
+    .suggestion-content {
+      .navbar {
+        background-color: transparent;
+        border: none;
+        margin-bottom: 10px;
+      }
+      img {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+      }
+      button {
+        border: none;
+        color: #0095f6;
+        background-color: transparent;
+        font-weight: bold;
+        font-size: 13px;
+      }
+    }
+    .suggestion-title {
+      margin: 10px 10px 0px 10px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #8e8e8e;
+    }
+    .suggestion-list {
+      a {
+        text-decoration: none;
+        color: rgb(8, 8, 8);
+      }
+      img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin: 5px;
+      }
+    }
   }
 
   .new-feed-container {
@@ -81,4 +119,96 @@
       }
     }
   }
+}
+
+// CSS for stories slider.
+$color_1: #FFF;
+
+#frame {
+	margin: 0 auto;
+	width: 100%;
+	input[type=radio] {
+		display: none;
+	}
+	label {
+		cursor: pointer;
+		text-decoration: none;
+	}
+}
+#slides {
+	position: relative;
+	z-index: 1;
+	.inner {
+		transition: margin-left 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+		width: 400%;
+		line-height: 0;
+    height: 90px;
+	}
+	.frame {
+		width: 25%;
+		float: left;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+	}
+	.frame_1 {
+	}
+	.frame_2 {
+	}
+	.frame_3 {
+	}
+	.frame_4 {
+	}
+}
+#overflow {
+	width: 100%;
+	overflow: hidden;
+}
+#controls {
+  margin: -90px 0 0 0;
+	width: 100%;
+	height: 0;
+	z-index: 3;
+	position: relative;
+	label {
+		transition: opacity 0.2s ease-out;
+		display: none;
+		width: 50px;
+		height: 50px;
+		opacity: .4;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+.frame-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      margin: -10px 10px 10px 5px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #e63d3d;
+    }
+    span {
+      font-weight: 600;
+      font-size: 11px;
+      font-family: "Helvetica Neue", "Helvetica";
+    }
+  }
+}
+
+//responsive
+@media screen and (max-width: 900px) {
+	
 }
