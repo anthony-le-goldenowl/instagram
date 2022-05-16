@@ -9,7 +9,7 @@
 require("@rails/activestorage").start()
 require("channels")
 require('jquery')
-
+require('./user')
 import Rails from '@rails/ujs'
 import * as ActiveStorage from '@rails/activestorage'
 import 'channels'

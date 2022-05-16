@@ -66,6 +66,17 @@
         </div>
       <%end%>
     </div>
-    <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">...</div>
+    <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
+      <%= form_with model: @current_user, local: true, html: {class: "form-edit-user"}, method: "PATCH", url: user_password_path  do |f|%>
+        <%= render "devise/shared/error_messages", resource: current_user %>
+        <%= f.hidden_field :reset_password_token %>
+
+        <div class="form-group row">
+        </div>
+
+        <div class="col-sm-9">
+          <%= f.submit "Change my password", class: 'btn btn-primary'%>
+        </div>
+      <% end %>
   </div>
 </div>
