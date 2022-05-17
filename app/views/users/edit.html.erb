@@ -5,16 +5,41 @@
   </div>
   <div class="details tab-content" id="v-pills-tabContent">
     <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-      <%= form_with model: current_user, local: true, html: {class: "form-edit-user"} do |f| %>
-        <div class="form-group row">
-          <div class="col-sm-3 col-form-label">
-            <%= image_pack_tag 'avatar.jpg', class: "profile-avatar"%>
-          </div>
-          <div class="col-sm-9">
-            <p class="username"><%=current_user.username %></p>
-            <a class="change-photo" href="">Change Profile Photo</a>
+      <div class="form-group row form-edit-user">
+        <div class="col-sm-3 col-form-label">
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar, class: "profile-avatar"%>
+          <% else %>
+            <%= image_pack_tag 'avatar/blank.jpeg', class: "profile-avatar" %>
+          <% end %>
+        </div>
+        <div class="col-sm-9">
+          <p class="username"><%=current_user.username %></p>
+          <%= link_to 'Change Profile Photo', new_user_path, class: 'change-photo', remote: true, data: { 'bs-toggle': 'modal', 'bs-target': '#change-avatar-modal' } %>
+          <div class="modal fade" id="change-avatar-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Change avatar</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= form_with model: current_user do |f| %>
+                  <div class="form-group">
+                    <%= f.label :avatar, 'Upload your image' %>
+                    <%= f.file_field :avatar %>
+                  </div>
+                  <div class="text-center">
+                    <%= f.submit 'Change', class: 'btn btn-primary'%>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+      <%= form_with model: current_user, local: true, html: {class: "form-edit-user"} do |f| %>
         <div class="form-group row">
           <%= f.label :name, class: 'col-sm-3 col-form-label' %>
           <div class="col-sm-9">
@@ -63,7 +88,7 @@
           <div class="col-sm-9">
             <%= f.submit "Submit", class: 'btn btn-primary' %>
           </div>
-        </div>
+      </div>
       <%end%>
     </div>
     <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">

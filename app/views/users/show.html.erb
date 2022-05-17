@@ -2,7 +2,11 @@
   <div class="profile row">
     <div class="col-md-4 avatar">
       <div class="wrapper">
-        <%= image_pack_tag 'avatar.jpg'%>
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar %>
+        <% else %>
+          <%= image_pack_tag 'avatar/blank.jpeg' %>
+        <% end %> 
       </div>
     </div>
     
@@ -14,7 +18,7 @@
         </a>
       </div>
       <ul class="posts">
-        <li><span>12</span> posts</li>
+        <li><span><%= @posts.count %></span> posts</li>
         <li><span>195</span> followers</li>
         <li><span>345</span> following</li>
       </ul>
@@ -38,13 +42,11 @@
   </a>
 </div>
 <div class="user-posts">
-  <div class="wrapper">
-    <img src="https://th.bing.com/th/id/OIP.31qt7XgIjVEc8byeuVL0ngHaEo?w=270&h=180&c=7&r=0&o=5&pid=1.7">
-  </div>
-  <div class="wrapper">
-    <img src="https://th.bing.com/th/id/OIP._YLtuhfZJH0KLpkp-EEiVgHaH5?w=158&h=180&c=7&r=0&o=5&pid=1.7">
-  </div>
-  <div class="wrapper">
-    <img src="https://th.bing.com/th/id/OIP.oy8SbD3NP4J7tun01gMjmgHaEK?w=332&h=186&c=7&r=0&o=5&pid=1.7">
-  </div>
+  <% @posts.each do |post|%>
+  <a href="#">
+    <div class="wrapper">
+      <%=image_tag post.image %>
+    </div>
+  </a>
+  <% end %>
 </div>
