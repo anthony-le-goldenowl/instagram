@@ -28,8 +28,6 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
-  validate :avatar_presence
-
   has_many :posts, dependent: :destroy
   has_one_attached :avatar
 
