@@ -1,9 +1,7 @@
 <% if user_signed_in? %>
   <%= form_with model: @post do |f| %>
     <div class="form-group">
-      <p class="emoji-picker-container">
-        <%= f.text_area :caption, class: 'form-control', data: { emojiable: true } %>
-      </p>
+      <%= f.text_area :caption, class: 'form-control' %>
     </div>
     <div class="form-group">
       <%= f.file_field :image %>

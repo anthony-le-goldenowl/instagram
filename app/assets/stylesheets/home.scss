@@ -71,10 +71,12 @@
         display: flex;
         .avatar{
           width: 32px;
+          height: 32px;
           margin: 8px;
           img{
             width: 100%;
-            border: 1px solid #e63d3d;
+            height: 100%;
+            border: 1.5px solid #e63d3d;
             border-radius: 50%;
           }
         }

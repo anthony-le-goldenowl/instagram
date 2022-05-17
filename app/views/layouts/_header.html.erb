@@ -17,7 +17,7 @@
       <a href="#">
         <%= image_pack_tag 'header/messenger.png'%>
       </a>
-      <a href="<%= new_post_path%>" data-remote="true" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">
+      <a href="<%= new_post_path %>" data-remote="true" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">
         <%= image_pack_tag 'header/add.png'%>
       </a>
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -28,7 +28,6 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <%= render 'posts/create_post_modal'%>
             </div>
           </div>
         </div>

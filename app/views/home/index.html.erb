@@ -11,7 +11,9 @@
           <section class="new-post">
             <div class="user">
               <div class="avatar">
-                <%= image_pack_tag 'avatar.jpg'%>
+                <% if post.user.avatar.attached? %>
+                  <%= image_tag post.user.avatar %>
+                <% end %>
               </div>
               <div class="username">
                 <%= post.user.username %>
