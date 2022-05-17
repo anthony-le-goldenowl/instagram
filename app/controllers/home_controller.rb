@@ -1,8 +1,10 @@
 class HomeController < ApplicationController
+  include Pagy::Backend
+
   before_action :check_login
 
   def index
-    @posts = Post.order(created_at: :desc)
+    @pagy, @posts = pagy(Post.order(created_at: :desc), items: 5)
   end
 
   private

@@ -1,12 +1,13 @@
 /*User show*/
 .profile .avatar{
   .wrapper{
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     margin: 40px auto;
   }
   .wrapper img{
     width: 100%;
+    height: 100%;
     border-radius: 50%;
   }
 }
@@ -40,7 +41,7 @@
       display: inline;
       padding-right: 40px;
       font-size: 15px;
-      span{
+      span {
         color: #262626;
         font-weight: 600;
       }
@@ -83,15 +84,21 @@
 }
 .user-posts{
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 20px;
-.wrapper{
-    width: 280px;
-    height: 280px;
-    margin: 15px;
-    img{
-      width: 100%;
+  a {
+    &:hover {
+      opacity: 0.8;
+    }
+    .wrapper {
+      width: 280px;
+      height: 280px;
+      margin: 15px;
+      img{
+        width: 100%;
+      }
     }
   }
 }

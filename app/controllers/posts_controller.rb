@@ -12,10 +12,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   private

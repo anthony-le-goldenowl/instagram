@@ -23,6 +23,13 @@ gem 'popper_js', '~> 2.9.3'
 
 gem 'activestorage'
 
+# page 1 2 3 4 >>nextPage
+gem 'pagy'
+
+group :development do
+  gem 'annotate'
+end
+
 gem 'rails_emoji_picker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
