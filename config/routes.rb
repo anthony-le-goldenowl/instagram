@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
   resources :users, only: %i[show edit update new]
-  resources :posts, only: %i[new create]
+  resources :posts, only: %i[new create show destroy]
 end

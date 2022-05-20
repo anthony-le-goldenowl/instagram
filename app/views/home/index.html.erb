@@ -21,20 +21,30 @@
                 <%= link_to post.user.username, user_path(post.user.id), class: 'username'%>
               </div>
             </div>
-            <%= image_tag post.image, class: 'main-image' %>
+            <%= link_to post_path(post), remote: true, data: { 'bs-toggle': 'modal', 'bs-target': '#show-post-modal' }  do %>
+              <%= image_tag post.image, class: 'main-image' %>
+            <% end %>
+            <div class="modal fade" id="show-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-body">
+                  </div>
+                </div>
+              </div>
+            </div>
             <section class="post-actions navbar navbar-light d-flex justify-content-between">
               <span class="post-reacts">
-                <a href="#">
-                  <%= image_pack_tag 'homepage/like-btn.png'%>
+                <a>
+                  <%= image_pack_tag 'homepage/like-btn.png', class: 'like-btn' %>
                 </a>
-                <a href="#">
+                <a href="">
                   <%= image_pack_tag 'homepage/comment.png'%>
                 </a>
-                <a href="#">
+                <a href="">
                   <%= image_pack_tag 'homepage/send-btn.png'%>
                 </a>
               </span>
-              <a href="#">
+              <a href="">
                 <%= image_pack_tag 'homepage/save-btn.png'%>
               </a>
             </section>
@@ -47,11 +57,11 @@
               </span>
               <%= post.caption %>
             </div>
-            <a href="#" style="text-decoration: none;">
+            <%= link_to post_path(post), remote: true, data: { 'bs-toggle': 'modal', 'bs-target': '#show-post-modal' }, style: 'text-decoration: none'  do %>
               <div class="view-comment-btn">
                 View all comments
               </div>
-            </a>
+            <% end %>
             <div class="view-comment-btn" style="font-size: 12px">
               2 HOURS AGO
             </div>
