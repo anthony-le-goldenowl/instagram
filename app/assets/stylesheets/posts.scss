@@ -2,3 +2,66 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
+.post-show{
+  position: relative;
+  margin: -1rem;
+  .col-md-8{
+    padding: 0;
+    .image{
+      width: 100%;
+    }
+  }
+  .user {
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+    .post-avatar {
+      width: 48px;
+      height: 48px;
+      margin: 5px;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid #e63d3d;
+      }
+    }
+    .post-username {
+      margin: 16px 0 0 4px;
+      color: #262626;
+      font-size: 16px !important;
+      font-weight: 600;
+    }
+  }
+  .caption{
+    padding: 1px 0;
+    display: flex;
+    color: #262626;
+    font-size: 14px;
+    font-weight: 450;
+    align-items: center;
+    .post-avatar-small {
+      width: 32px;
+      height: 32px;
+      margin: 0 5px 5px 5px;
+      img {
+        width: 100%;
+        height: 100%;
+        border: 1.5px solid #e63d3d;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.modal-backdrop.show {
+    opacity: .7 !important;
+}
+
+.post-setting-modal {
+  .setting-btn {
+    width: 100%;
+    height: 50px;
+  }
+}

@@ -1,0 +1,31 @@
+.search-page
+  - if !@posts.nil?
+    .hashtag.row
+      .col-md-4.avatar
+        .wrapper
+          = image_tag @posts.first.image
+      .col-md-8.hashtag-info
+        .hashtag-wrapper
+          h2.hashtag-name
+            = @hash_tag_name_finding
+          .posts-count 
+            = @posts.count
+            span 
+              |  Posts
+    .search-text
+      | Top posts
+    hr
+    .user-posts
+      - @posts.each do |post|
+        = link_to post_path(post), remote: true, data: { 'bs-toggle': 'modal', 'bs-target': '#show-post-modal' } do
+          .wrapper
+            = image_tag post.image
+
+    #show-post-modal.modal.fade[tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"]
+      .modal-dialog.modal-xl.modal-dialog-centered
+        .modal-content
+          .modal-body
+
+  - else 
+    h1
+      | Oops, hong co gi het :>

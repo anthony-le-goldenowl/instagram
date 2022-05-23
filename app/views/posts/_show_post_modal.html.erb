@@ -1,0 +1,66 @@
+<div class="post-show row">
+  <div class="col-md-8">
+    <%=image_tag @post.image, class: 'image' %>
+  </div>
+  <div class="col-md-4">
+    <div class="user d-flex justify-content-between">
+      <div class="post-modal-header d-flex">
+        <div class="post-avatar">
+          <% if @post.user.avatar.attached? %>
+            <%= link_to user_path(@post.user) do %>
+              <%= image_tag @post.user.avatar %>
+            <% end %>
+          <% end %>
+        </div>
+        <%= link_to @post.user.username, user_path(@post.user), class: 'post-username' %>
+      </div>
+      <div class="dropdown">
+        <%= link_to '', id: 'dropdownMenuButton1', data: { 'bs-toggle': 'dropdown', 'aria-expanded': 'false' } do %>
+          <%= image_pack_tag 'more.png' %>
+        <% end %>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <% if @post.user.id == current_user.id %>
+            <li><%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item', style: 'color: red; font-weight: bold' %></li>
+          <% end %>
+          <li><%= link_to '...', '', class: 'dropdown-item' %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="caption">
+      <div class="post-avatar-small">
+        <% if @post.user.avatar.attached? %>
+          <%= link_to user_path(@post.user) do %>
+            <%= image_tag @post.user.avatar %>
+          <% end %>
+        <% else %>
+          <%= image_pack_tag 'avatar/blank,jpeg' %>
+        <% end %>
+      </div>
+      <%= @post.caption%>
+    </div>
+    <div class="comment-section">
+    </div>
+    <section class="post-actions navbar navbar-light d-flex justify-content-between">
+      <span class="post-reacts">
+        <a>
+          <%= image_pack_tag 'homepage/like-btn.png', class: 'like-btn' %>
+        </a>
+        <a href="">
+          <%= image_pack_tag 'homepage/comment.png'%>
+        </a>
+        <a href="">
+          <%= image_pack_tag 'homepage/send-btn.png'%>
+        </a>
+      </span>
+      <a href="">
+        <%= image_pack_tag 'homepage/save-btn.png'%>
+      </a>
+    </section>
+    <div class="post-like-records">
+      14 likes
+    </div>
+    <div class="view-comment-btn" style="font-size: 12px">
+      2 HOURS AGO
+    </div>
+  </div>
+</div>
