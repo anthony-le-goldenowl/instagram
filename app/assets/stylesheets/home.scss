@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+$avatar-border-color:  linear-gradient(90deg, rgba(230,132,53,1) 23%, rgba(214,36,159,1) 65%, rgba(40,90,235,1) 95%);
+
 .home-container {
   width: 100%;
   position: relative;
@@ -163,14 +165,6 @@ $color_1: #FFF;
 		align-items: center;
 		height: 100%;
 	}
-	.frame_1 {
-	}
-	.frame_2 {
-	}
-	.frame_3 {
-	}
-	.frame_4 {
-	}
 }
 #overflow {
 	width: 100%;
@@ -209,7 +203,7 @@ $color_1: #FFF;
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      border: 2px solid #e63d3d;
+      border: 1.7px solid rgb(224, 18, 52);
     }
     span {
       font-weight: 600;

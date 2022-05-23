@@ -1,14 +1,14 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
 
-  before_action :check_header
+  before_action :check_header?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def index; end
 
   private
 
-  def check_header
+  def check_header?
     @check = (params[:controller] == 'users/sessions' && params[:action] == 'new') ||
     request.path == user_registration_path|| (params[:controller] == 'devise/registrations' && params[:action] == 'new')
   end
