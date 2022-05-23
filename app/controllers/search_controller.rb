@@ -6,7 +6,7 @@ class SearchController < ApplicationController
       @posts = Post.joins(:hash_tags).where(hash_tags: { name: query })
     else
       @user_found = User.find_by(username: params[:query])
-      redirect_to user_path(@user_found.id) unless @user_found.nil?
+      redirect_to show_user_path(@user_found.username) unless @user_found.nil?
     end
   end
 end

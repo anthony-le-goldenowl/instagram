@@ -49,7 +49,7 @@
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser">
             <li>
-              <a class="dropdown-item" href="<%= user_path(current_user)%>">Profile</a>
+              <a class="dropdown-item" href="<%= show_user_path(current_user.username.to_s)%>">Profile</a>
             </li>
             <li>
               <a class="dropdown-item" href="#">Saved</a>

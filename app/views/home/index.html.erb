@@ -18,7 +18,7 @@
                 <% end %>
               </div>
               <div class="username">
-                <%= link_to post.user.username, user_path(post.user.id), class: 'username'%>
+                <%= link_to post.user.username, show_user_path(post.user.username.to_s),  class: 'username'%>
               </div>
             </div>
             <%= link_to post_path(post), remote: true, data: { 'bs-toggle': 'modal', 'bs-target': '#show-post-modal' }  do %>
@@ -55,7 +55,13 @@
               <span style="font-weight: 600;">
                 <%= post.user.username %>
               </span>
-              <%= post.caption %>
+              <% post.caption.to_s.split(' ').each do |word| %>
+                <% if word.start_with?('#') %>
+                  <%= link_to word, search_path(query: word) %>
+                <%else %>
+                  <%= word %>
+                <%end %>
+              <% end %>
             </div>
             <%= link_to post_path(post), remote: true, data: { 'bs-toggle': 'modal', 'bs-target': '#show-post-modal' }, style: 'text-decoration: none'  do %>
               <div class="view-comment-btn">
