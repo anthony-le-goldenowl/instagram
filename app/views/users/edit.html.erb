@@ -24,7 +24,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <%= form_with model: current_user do |f| %>
+                  <%= form_with model: current_user, url: edit_avatar_path(current_user.id) do |f| %>
                   <div class="form-group">
                     <%= f.label :avatar, 'Upload your image' %>
                     <%= f.file_field :avatar %>
