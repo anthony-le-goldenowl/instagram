@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
-  resources :users, only: %i[edit update new]
+  resources :users, only: %i[edit update new] do
+    post :follow, to: 'users/follows#create', as: :follow
+    delete :follow, to: 'users/follows#destroy', as: :unfollow
+  end
   resources :posts, only: %i[new create show destroy]
 end

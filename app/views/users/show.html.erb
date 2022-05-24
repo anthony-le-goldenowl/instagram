@@ -17,6 +17,8 @@
           <a class="edit-profile-btn" href="<%= edit_user_path(current_user)%>">
             <button>Edit Profile</button>
           </a>
+        <% else %>
+          <%= render 'follow_btn', user: @user %>
         <% end %>
       </div>
       <ul class="posts">
