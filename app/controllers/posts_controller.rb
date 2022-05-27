@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     @post.destroy
 
-    redirect_to user_path(current_user)
+    redirect_to show_user_path(current_user.username)
   end
 
   private
