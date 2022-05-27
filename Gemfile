@@ -11,7 +11,7 @@ gem 'font-awesome-rails'
 
 gem 'devise'
 
-gem "slim-rails"
+gem 'slim-rails'
 
 gem 'pry-rails', :group => :development
 

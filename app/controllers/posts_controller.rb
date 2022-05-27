@@ -7,6 +7,8 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit; end
+
   def create
     @post = Post.new(post_params)
     @post.image.attach(post_params[:image])

@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <%= form_with model: current_user, local: true, html: {class: "form-edit-user"} do |f| %>
+      <%= form_with model: current_user, url: user_path(current_user.username), local: true, html: {class: "form-edit-user"} do |f| %>
         <div class="form-group row">
           <%= f.label :name, class: 'col-sm-3 col-form-label' %>
           <div class="col-sm-9">

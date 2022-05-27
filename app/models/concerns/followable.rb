@@ -5,9 +5,8 @@ module Followable
   included do
     has_many :follower_relationships, foreign_key: :following_id, class_name: 'Follow'
     has_many :followers, through: :follower_relationships, source: :follower
-
-    has_many :following_relationships, foreign_key:
-                                      :follower_id, class_name: 'Follow'
+    # source: follower => look for an association called follower on the 
+    has_many :following_relationships, foreign_key: :follower_id, class_name: 'Follow'
     has_many :following, through: :following_relationships, source: :following
   end
 
@@ -20,7 +19,6 @@ module Followable
   end
 
   def following?(user_id)
-    relationship = Follow.find_by(follower_id: id, following_id: user_id)
-    return true if relationship
+    Follow.exists?(follower_id: id, following_id: user_id)
   end
 end
