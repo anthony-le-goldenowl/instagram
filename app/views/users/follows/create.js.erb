@@ -1,0 +1,4 @@
+var followBtn = '<%= j render "users/follow_btn", user: @user %>';
+document.getElementById('follow-btn-wrapper<%= @user.id%>').innerHTML = followBtn;
+document.getElementById('followers-count').innerHTML = '<%= @user.followers_count %>';
+document.getElementById('followings-count').innerHTML = '<%= @user.followings_count %>';

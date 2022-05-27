@@ -96,42 +96,17 @@
       <div class="suggestion-title mb-1">Suggestions for you</div>
       <div class="row suggestion-content">
         <ul class="suggestion-list">
-          <li class="d-flex justify-content-between">
-            <a href="#" class="d-flex justify-content-start">
-              <%= image_pack_tag 'avatar/avatar16.jpeg' %>
-              <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> truongxuan </div>
-            </a>
-            <button>
-              Follow
-            </button>
-          </li>
-          <li class="d-flex justify-content-between">
-            <a href="#" class="d-flex justify-content-start">
-              <%= image_pack_tag 'avatar/avatar15.jpeg' %>
-              <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> kimphat12 </div>
-            </a>
-            <button>
-              Follow
-            </button>
-          </li>
-          <li class="d-flex justify-content-between">
-            <a href="#" class="d-flex justify-content-start">
-              <%= image_pack_tag 'avatar/avatar14.jpeg' %>
-              <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> anthai </div>
-            </a>
-            <button>
-              Follow
-            </button>
-          </li>
-          <li class="d-flex justify-content-between">
-            <a href="#" class="d-flex justify-content-start">
-              <%= image_pack_tag 'avatar/avatar13.jpeg' %>
-              <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> xuan.linh.22 </div>
-            </a>
-            <button>
-              Follow
-            </button>
-          </li>
+          <% @suggest_users.each do |user| %>
+            <% if user.id != current_user.id %>
+              <li class="d-flex justify-content-between">
+                <a href="<%= show_user_path(user.username) %>" class="d-flex justify-content-start">
+                  <%= image_tag user.avatar %>
+                  <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> <%= user.username %> </div>
+                </a>
+                <%= render 'users/follow_btn', user: user %>
+              </li>
+            <% end %>
+          <% end %>
         </ul>
       </div>
     </div>

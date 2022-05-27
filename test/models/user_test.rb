@@ -8,6 +8,8 @@
 #  current_sign_in_ip     :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  followers_count        :integer          default(0), not null
+#  followings_count       :integer          default(0), not null
 #  gender                 :string
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string

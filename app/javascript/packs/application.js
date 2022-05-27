@@ -31,3 +31,5 @@ window.addEventListener('turbolinks:load', () => {
     return new bootstrap.Tooltip(tooltipTriggerEl)
   })
 })
+
+import "controllers"

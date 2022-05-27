@@ -8,6 +8,8 @@
 #  current_sign_in_ip     :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  followers_count        :integer          default(0), not null
+#  followings_count       :integer          default(0), not null
 #  gender                 :string
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
@@ -28,6 +30,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  include Followable
   has_many :posts, dependent: :destroy
   has_one_attached :avatar
   # Include default devise modules. Others available are:

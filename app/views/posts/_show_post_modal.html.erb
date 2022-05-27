@@ -7,12 +7,12 @@
       <div class="post-modal-header d-flex">
         <div class="post-avatar">
           <% if @post.user.avatar.attached? %>
-            <%= link_to user_path(@post.user) do %>
+            <%= link_to show_user_path(@post.user.username) do %>
               <%= image_tag @post.user.avatar %>
             <% end %>
           <% end %>
         </div>
-        <%= link_to @post.user.username, user_path(@post.user), class: 'post-username' %>
+        <%= link_to @post.user.username, show_user_path(@post.user.username), class: 'post-username' %>
       </div>
       <div class="dropdown">
         <%= link_to '', id: 'dropdownMenuButton1', data: { 'bs-toggle': 'dropdown', 'aria-expanded': 'false' } do %>
@@ -20,6 +20,7 @@
         <% end %>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <% if @post.user.id == current_user.id %>
+            <li><%= link_to 'Edit post', edit_post_path(@post), method: :get, class: 'dropdown-item', style: 'color: black; font-weight: bold' %></li>
             <li><%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item', style: 'color: red; font-weight: bold' %></li>
           <% end %>
           <li><%= link_to '...', '', class: 'dropdown-item' %></li>

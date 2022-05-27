@@ -1,34 +1,47 @@
-<div class="user-profile">
-  <div class="profile row">
-    <div class="col-md-4 avatar">
-      <div class="wrapper">
-        <% if @user.avatar.attached? %>
-          <%= image_tag @user.avatar %>
-        <% else %>
-          <%= image_pack_tag 'avatar/blank.jpeg' %>
-        <% end %> 
+<header class="flex mb-16" data-controller="follow-button">
+  <div class="user-profile">
+    <div class="profile row">
+      <div class="col-md-4 avatar">
+        <div class="wrapper">
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar %>
+          <% else %>
+            <%= image_pack_tag 'avatar/blank.jpeg' %>
+          <% end %> 
+        </div>
       </div>
-    </div>
-    
-    <div class="col-md-8 basic-info">
-      <div class="user-wrapper">
-        <h2 class="username"><%= @user.username%></h2>
-        <% if @user.id == current_user.id %>
-          <a class="edit-profile-btn" href="<%= edit_user_path(current_user)%>">
-            <button>Edit Profile</button>
-          </a>
-        <% end %>
+      
+      <div class="col-md-8 basic-info">
+        <div class="user-wrapper">
+          <h2 class="username"><%= @user.username%></h2>
+          <% if @user.id == current_user.id %>
+            <a class="edit-profile-btn" href="<%= edit_user_path(current_user.username)%>">
+              <button>Edit Profile</button>
+            </a>
+          <% else %>
+            <%= render 'follow_btn', user: @user %>
+          <% end %>
+        </div>
+        <ul class="posts">
+          <li><span><%= @post.count %></span> posts</li>
+          <li>
+            <span id="followers-count" data-follow-button-target="followerCount">
+              <%= @user.followers_count %>
+            </span>
+            <div style="display: inline-block;" data-follow-button-target="followerMessage"></div>
+          </li>
+          <li>
+            <span id="followings-count">
+              <%= @user.followings_count %>
+            </span> following
+          </li>
+        </ul>
+        <h2 class="name"><%= @user.name%></h2>
+        <h2 class="bio"><%= @user.bio%></h2>
       </div>
-      <ul class="posts">
-        <li><span><%= @post.count %></span> posts</li>
-        <li><span>195</span> followers</li>
-        <li><span>345</span> following</li>
-      </ul>
-      <h2 class="name"><%= @user.name%></h2>
-      <h2 class="bio"><%= @user.bio%></h2>
     </div>
   </div>
-</div>
+</header>
 <div class="profile-tabs">
   <a class="tab active" href="">
     <i class="fa fa-th"></i>
