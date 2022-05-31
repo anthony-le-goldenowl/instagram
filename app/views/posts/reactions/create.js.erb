@@ -1,0 +1,8 @@
+var likeBtn = '<%= j render "reaction_btn", post: @post %>';
+document.getElementById('reaction-btn-wrapper<%= @post.id%>').innerHTML = likeBtn;
+document.getElementById('likes-count<%= @post.id %>').innerHTML = '<%= @post.likes_count %>';
+<% if @post.likes_count > 1 %>
+  document.getElementById('like-message<%= @post.id %>').innerHTML = 'likes';
+<% else %>
+  document.getElementById('like-message<%= @post.id %>').innerHTML = 'like';
+<% end %>

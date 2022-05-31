@@ -2,11 +2,12 @@
 #
 # Table name: posts
 #
-#  id         :bigint           not null, primary key
-#  caption    :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer
+#  id          :bigint           not null, primary key
+#  caption     :string
+#  likes_count :integer          default(0), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :integer
 #
 class Post < ApplicationRecord
   validate :image_presence
@@ -18,6 +19,9 @@ class Post < ApplicationRecord
   has_many :post_hash_tags
   has_many :hash_tags, through: :post_hash_tags
 
+  has_many :post_reactions
+  has_many :users, through: :post_reactions
+
   after_commit :create_hash_tags, on: :create
 
   # hash tag
@@ -28,7 +32,11 @@ class Post < ApplicationRecord
   def create_hash_tags
     # create hash_tags of Post
     hash_tag_names.each do |name|
-      hash_tags.create(name: name)
+      if HashTag.exists?(name: name)
+        post_hash_tags.create(post_id: id, hash_tag_id: HashTag.find_by(name: name).id)
+      else
+        hash_tags.create(name: name)
+      end
     end
   end
 

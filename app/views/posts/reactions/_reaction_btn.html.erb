@@ -1,0 +1,27 @@
+<div id="reaction-btn-wrapper" display="none">
+  <div id="reaction-btn-wrapper<%= post.id %>">
+  <% if current_user.liked?(post.id) %>
+    <%= link_to post_unlike_path(post.id), class: 'unlike-btn',
+      method: :delete,
+      data: {
+        target: 'like-button.link',
+        action: 'ajax:success->like#update'
+      },
+      remote: true do
+    %>
+      <%= image_pack_tag 'homepage/liked-btn.png' %>
+    <% end %>
+  <% else %>
+    <%= link_to post_like_path(post.id), class: 'like-btn',
+      method: :post,
+      data: {
+        target: 'like-button.link',
+        action: 'ajax:success->like#update'
+      },
+      remote: true do
+    %>
+      <%= image_pack_tag 'homepage/like-btn.png' %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
