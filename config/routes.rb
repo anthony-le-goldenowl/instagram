@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   end
 
   #post resources
-  resources :posts, only: %i[new create show destroy edit update]
+  resources :posts, only: %i[new create show destroy edit update] do
+    post :like, to: 'posts/reactions#create', as: :like
+    delete :like, to: 'posts/reactions#destroy', as: :unlike
+  end
 end

@@ -33,6 +33,10 @@ class User < ApplicationRecord
   include Followable
   has_many :posts, dependent: :destroy
   has_one_attached :avatar
+
+  has_many :post_reactions
+  has_many :posts, through: :post_reactions
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -40,5 +44,17 @@ class User < ApplicationRecord
 
   def avatar_presence
     errors.add(:avatar, "can't be blank") unless avatar.attached?
+  end
+
+  def like_post(post_id)
+    post_reactions.create(post_id: post_id)
+  end
+
+  def unlike_post(post_id)
+    post_reactions.find_by(post_id: post_id).destroy
+  end
+
+  def liked?(post_id)
+    PostReaction.exists?(post_id: post_id, user_id: id)
   end
 end

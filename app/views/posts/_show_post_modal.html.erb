@@ -37,28 +37,39 @@
           <%= image_pack_tag 'avatar/blank,jpeg' %>
         <% end %>
       </div>
-      <%= @post.caption%>
+      <% @post.caption.to_s.split(' ').each do |word| %>
+        <% if word.start_with?('#') %>
+          <%= link_to word, search_path(query: word) %>
+        <%else %>
+          <%= word %>
+        <%end %>
+      <% end %>
     </div>
     <div class="comment-section">
     </div>
     <section class="post-actions navbar navbar-light d-flex justify-content-between">
-      <span class="post-reacts">
-        <a>
-          <%= image_pack_tag 'homepage/like-btn.png', class: 'like-btn' %>
-        </a>
+      <div class="post-reacts">
+        <%= render 'posts/reactions/reaction_btn', post: @post, style: 'display: inline-block;' %>
         <a href="">
           <%= image_pack_tag 'homepage/comment.png'%>
         </a>
         <a href="">
           <%= image_pack_tag 'homepage/send-btn.png'%>
         </a>
-      </span>
+      </div>
       <a href="">
         <%= image_pack_tag 'homepage/save-btn.png'%>
       </a>
     </section>
     <div class="post-like-records">
-      14 likes
+      <span id="likes-count<%= @post.id %>" data-like-button-target="likeCount">
+        <%= @post.likes_count %>
+      </span>
+      <% if @post.likes_count > 1 %>
+        <div id="like-message<%= @post.id %>" style="display: inline-block;" data-like-button-target="likeMessage">likes</div>
+      <% else %>
+        <div id="like-message<%= @post.id %>" style="display: inline-block;" data-like-button-target="likeMessage">like</div>
+      <% end %>
     </div>
     <div class="view-comment-btn" style="font-size: 12px">
       2 HOURS AGO

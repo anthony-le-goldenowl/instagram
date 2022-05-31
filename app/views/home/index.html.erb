@@ -1,114 +1,121 @@
-<div class="home-container">
-  <div class="row">
-    <div class="col-7 news-container">
-    
-      <div class="row new-feed-container">
-        <%= render 'home/stories'%>
-      </div>
+<header class="flex mb-16" data-controller="like-button">
+  <div class="home-container">
+    <div class="row">
+      <div class="col-7 news-container">
+      
+        <div class="row new-feed-container">
+          <%= render 'home/stories'%>
+        </div>
 
-      <div class="row new-post-container">
-        <% @posts.each do |post| %>
-          <section class="new-post">
-            <div class="user">
-              <div class="avatar">
-                <% if post.user.avatar.attached? %>
-                  <%= link_to user_path(post.user.id) do %>
-                    <%= image_tag post.user.avatar %>
+        <div class="row new-post-container">
+          <% @posts.each do |post| %>
+            <section class="new-post">
+              <div class="user">
+                <div class="avatar">
+                  <% if post.user.avatar.attached? %>
+                    <%= link_to user_path(post.user.id) do %>
+                      <%= image_tag post.user.avatar %>
+                    <% end %>
                   <% end %>
-                <% end %>
+                </div>
+                <div class="username">
+                  <%= link_to post.user.username, show_user_path(post.user.username.to_s),  class: 'username'%>
+                </div>
               </div>
-              <div class="username">
-                <%= link_to post.user.username, show_user_path(post.user.username.to_s),  class: 'username'%>
-              </div>
-            </div>
-            <%= link_to post_path(post), remote: true, data: { 'bs-toggle': 'modal', 'bs-target': '#show-post-modal' }  do %>
-              <%= image_tag post.image, class: 'main-image' %>
-            <% end %>
-            <div class="modal fade" id="show-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-xl modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-body">
+              <%= link_to post_path(post), remote: true, data: { 'bs-toggle': 'modal', 'bs-target': '#show-post-modal' }  do %>
+                <%= image_tag post.image, class: 'main-image' %>
+              <% end %>
+              <div class="modal fade" id="show-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <section class="post-actions navbar navbar-light d-flex justify-content-between">
-              <span class="post-reacts">
-                <a>
-                  <%= image_pack_tag 'homepage/like-btn.png', class: 'like-btn' %>
-                </a>
+              <section class="post-actions navbar navbar-light d-flex justify-content-between">
+                <span class="post-reacts">
+                  <%= render 'posts/reactions/reaction_btn', post: post, class: 'react-btn' %>
+                  <a href="">
+                    <%= image_pack_tag 'homepage/comment.png'%>
+                  </a>
+                  <a href="">
+                    <%= image_pack_tag 'homepage/send-btn.png'%>
+                  </a>
+                </span>
                 <a href="">
-                  <%= image_pack_tag 'homepage/comment.png'%>
+                  <%= image_pack_tag 'homepage/save-btn.png'%>
                 </a>
-                <a href="">
-                  <%= image_pack_tag 'homepage/send-btn.png'%>
-                </a>
-              </span>
-              <a href="">
-                <%= image_pack_tag 'homepage/save-btn.png'%>
-              </a>
-            </section>
-            <div class="post-like-records">
-              14 likes
-            </div>
-            <div class="caption">
-              <span style="font-weight: 600;">
-                <%= post.user.username %>
-              </span>
-              <% post.caption.to_s.split(' ').each do |word| %>
-                <% if word.start_with?('#') %>
-                  <%= link_to word, search_path(query: word) %>
-                <%else %>
-                  <%= word %>
-                <%end %>
-              <% end %>
-            </div>
-            <%= link_to post_path(post), remote: true, data: { 'bs-toggle': 'modal', 'bs-target': '#show-post-modal' }, style: 'text-decoration: none'  do %>
-              <div class="view-comment-btn">
-                View all comments
+              </section>
+              <div class="post-like-records">
+                <span id="likes-count<%= post.id %>" data-like-button-target="likeCount">
+                  <%= post.likes_count %>
+                </span>
+                <% if post.likes_count > 1 %>
+                  <div id="like-message<%= post.id %>" style="display: inline-block;" data-like-button-target="likeMessage">likes</div>
+                <% else %>
+                  <div id="like-message<%= post.id %>" style="display: inline-block;" data-like-button-target="likeMessage">like</div>
+                <% end %>
               </div>
-            <% end %>
-            <div class="view-comment-btn" style="font-size: 12px">
-              2 HOURS AGO
-            </div>
-          </section>
-        <% end %>
-        <%== pagy_nav(@pagy) %>
-      </div>
-    </div>
-
-    <div class="col-5 suggestions-container">
-      <div class="row suggestion-content">
-        <div class="navbar d-flex justify-content-between">
-          <div class="d-flex justify-content-start">
-            <%if current_user.avatar.attached? %>  
-              <%= image_tag current_user.avatar, class: 'm-2'%>
-            <% else %>
-              <%= image_pack_tag 'avatar/blank.jpeg', class: 'm-2' %>
-            <% end %>
-            <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> <%= current_user.username %> </div>
-          </div>
-          <button>
-            Switch
-          </button>
+              <div class="caption">
+                <span style="font-weight: 600;">
+                  <%= post.user.username %>
+                </span>
+                <% post.caption.to_s.split(' ').each do |word| %>
+                  <% if word.start_with?('#') %>
+                    <%= link_to word, search_path(query: word) %>
+                  <%else %>
+                    <%= word %>
+                  <%end %>
+                <% end %>
+              </div>
+              <%= link_to post_path(post), remote: true, data: { 'bs-toggle': 'modal', 'bs-target': '#show-post-modal' }, style: 'text-decoration: none'  do %>
+                <div class="view-comment-btn">
+                  View all comments
+                </div>
+              <% end %>
+              <div class="view-comment-btn" style="font-size: 12px">
+                2 HOURS AGO
+              </div>
+            </section>
+          <% end %>
+          <%== pagy_nav(@pagy) %>
         </div>
       </div>
-      <div class="suggestion-title mb-1">Suggestions for you</div>
-      <div class="row suggestion-content">
-        <ul class="suggestion-list">
-          <% @suggest_users.each do |user| %>
-            <% if user.id != current_user.id %>
-              <li class="d-flex justify-content-between">
-                <a href="<%= show_user_path(user.username) %>" class="d-flex justify-content-start">
-                  <%= image_tag user.avatar %>
-                  <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> <%= user.username %> </div>
-                </a>
-                <%= render 'users/follow_btn', user: user %>
-              </li>
+
+      <div class="col-5 suggestions-container">
+        <div class="row suggestion-content">
+          <div class="navbar d-flex justify-content-between">
+            <div class="d-flex justify-content-start">
+              <%if current_user.avatar.attached? %>  
+                <%= image_tag current_user.avatar, class: 'm-2'%>
+              <% else %>
+                <%= image_pack_tag 'avatar/blank.jpeg', class: 'm-2' %>
+              <% end %>
+              <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> <%= current_user.username %> </div>
+            </div>
+            <button>
+              Switch
+            </button>
+          </div>
+        </div>
+        <div class="suggestion-title mb-1">Suggestions for you</div>
+        <div class="row suggestion-content">
+          <ul class="suggestion-list">
+            <% @suggest_users.each do |user| %>
+              <% if user.id != current_user.id %>
+                <li class="d-flex justify-content-between">
+                  <a href="<%= show_user_path(user.username) %>" class="d-flex justify-content-start">
+                    <%= image_tag user.avatar %>
+                    <div class="d-flex justify-content-between align-items-center m-1" style="font-weight: bold; font-size: 14px;"> <%= user.username %> </div>
+                  </a>
+                  <%= render 'users/follow_btn', user: user %>
+                </li>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</header>

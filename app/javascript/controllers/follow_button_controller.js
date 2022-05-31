@@ -11,7 +11,7 @@ export default class extends Controller {
   update() {
     let message;
     console.log(this.followerCount)
-    if (this.followerCount == 1) {
+    if (this.followerCount == 1 || this.followerCount == 0) {
       message = 'follower';
     } else {
       message = 'followers';
