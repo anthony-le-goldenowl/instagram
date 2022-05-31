@@ -48,15 +48,15 @@
     <div class="comment-section">
     </div>
     <section class="post-actions navbar navbar-light d-flex justify-content-between">
-      <span class="post-reacts">
-        <%= render 'posts/reactions/reaction_btn', post: @post %>
+      <div class="post-reacts">
+        <%= render 'posts/reactions/reaction_btn', post: @post, style: 'display: inline-block;' %>
         <a href="">
           <%= image_pack_tag 'homepage/comment.png'%>
         </a>
         <a href="">
           <%= image_pack_tag 'homepage/send-btn.png'%>
         </a>
-      </span>
+      </div>
       <a href="">
         <%= image_pack_tag 'homepage/save-btn.png'%>
       </a>

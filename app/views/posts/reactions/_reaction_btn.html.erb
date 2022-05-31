@@ -1,5 +1,5 @@
-<div id="reaction-btn-wrapper" display="none">
-  <div id="reaction-btn-wrapper<%= post.id %>">
+<span id="reaction-btn-wrapper" display="none">
+  <span id="reaction-btn-wrapper<%= post.id %>">
   <% if current_user.liked?(post.id) %>
     <%= link_to post_unlike_path(post.id), class: 'unlike-btn',
       method: :delete,
@@ -23,5 +23,5 @@
       <%= image_pack_tag 'homepage/like-btn.png' %>
     <% end %>
   <% end %>
-  </div>
-</div>
+  </span>
+</span>
